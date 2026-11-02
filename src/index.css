@@ -1,0 +1,231 @@
+@import "tailwindcss";
+
+:root {
+  color-scheme: dark;
+
+  --color-bg: #202522;
+  --color-surface: #292f2b;
+  --color-surface-raised: #323a34;
+
+  --color-accent: #a8b99b;
+  --color-accent-hover: #bac9af;
+  --color-accent-terra: #d77b61;
+  --color-accent-terra-hover: #e18a70;
+
+  --color-text: #eee8dc;
+  --color-text-muted: #c1c8bd;
+  --color-text-subtle: #929d91;
+
+  --color-border: rgb(238 232 220 / 15%);
+  --color-border-strong: rgb(238 232 220 / 25%);
+
+  /* Typographie */
+  --font-sans: Inter, "Segoe UI", Arial, sans-serif;
+  --font-mono: "SFMono-Regular", Consolas, monospace;
+
+  /* Mise en page */
+  --page-gutter: clamp(1.25rem, 5vw, 5rem);
+  --content-width: 1440px;
+
+  /* Animations */
+  --duration-fast: 180ms;
+  --duration-normal: 350ms;
+  --duration-reveal: 650ms;
+
+  --ease-standard: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+:root {
+  --color-neutral-50: #292f2b;
+  --color-neutral-100: #303833;
+  --color-neutral-200: #3b443d;
+  --color-neutral-300: #4a544b;
+  --color-neutral-400: #929d91;
+  --color-neutral-500: #aeb8ac;
+  --color-neutral-600: #c1c8bd;
+  --color-neutral-700: #d4d9d0;
+  --color-neutral-800: #a8b99b;
+  --color-neutral-900: #202522;
+
+  --color-green-50: #2c332e;
+  --color-green-100: #3b4a3e;
+  --color-green-400: #a8b99b;
+  --color-green-600: #a8b99b;
+  --color-green-700: #c3d0b8;
+
+  --color-red-50: #392b26;
+  --color-red-100: #49332c;
+  --color-red-200: #724938;
+  --color-red-400: #d77b61;
+  --color-red-700: #e39379;
+  --color-red-800: #f0ad93;
+
+  --color-amber-50: #392b26;
+  --color-amber-900: #f0ad93;
+}
+
+html {
+  min-height: 100%;
+  background: var(--color-bg);
+  scroll-behavior: smooth;
+  scroll-padding-top: 6rem;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+
+  background-color: var(--color-bg);
+  color: var(--color-text);
+
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.65;
+  font-weight: 400;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+p {
+  margin-top: 0;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  color: var(--color-text);
+  line-height: 1.08;
+  letter-spacing: -0.035em;
+  font-weight: 500;
+}
+
+p {
+  color: var(--color-text-muted);
+}
+
+::placeholder {
+  color: var(--color-text-subtle);
+  opacity: 1;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button {
+  color: inherit;
+}
+
+img,
+video,
+svg {
+  max-width: 100%;
+}
+
+img,
+video {
+  height: auto;
+}
+
+::selection {
+  color: var(--color-bg);
+  background: var(--color-accent);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent-hover);
+  outline-offset: 4px;
+}
+
+.hero-image-wave {
+  clip-path: url(#hero-image-wave-desktop);
+}
+
+.hero-title {
+  --hero-title-extension: min(12vw, max(0px, calc(50vw - 640px)));
+
+  width: calc(100% + var(--hero-title-extension));
+  max-width: none;
+  margin-left: calc(-1 * var(--hero-title-extension));
+}
+
+.hero-copy {
+  --hero-copy-extension: min(12vw, max(0px, calc(50vw - 640px)));
+
+  width: min(calc(36rem + var(--hero-copy-extension)), 100%);
+  max-width: none;
+  margin-left: calc(-1 * var(--hero-copy-extension));
+  font-size: clamp(1rem, calc(1rem + 0.25vw), 1.25rem);
+}
+
+.how-it-works-experience-layout {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+@media (min-width: 1024px) {
+  .how-it-works-experience-layout {
+    grid-template-columns: minmax(220px, 0.75fr) minmax(0, 2.25fr);
+  }
+}
+
+.how-it-works-desktop-diagram {
+  display: none;
+}
+
+.how-it-works-compact-diagram {
+  display: block;
+  max-height: 43svh;
+}
+
+@media (min-width: 1280px) {
+  .how-it-works-desktop-diagram {
+    display: block;
+  }
+
+  .how-it-works-compact-diagram {
+    display: none;
+  }
+}
+
+@media (max-width: 1023px) {
+  .hero-image-wave {
+    clip-path: url(#hero-image-wave-mobile);
+  }
+
+  .hero-title {
+    --hero-title-extension: 0px;
+  }
+
+  .hero-copy {
+    --hero-copy-extension: 0px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
